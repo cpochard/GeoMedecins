@@ -1,0 +1,8 @@
+
+Site internet qui permet de localiser un médecin pas loin (collaboratif)
+--> Si médecin OK pour être contacté, il rentre son numéro de mobile dans le site
+--> Carte MAPS qui permet de localiser où l'on est, et le médecin le plus proche en fonction de son mobile
+--> Si problème, on va sur l'appli qui envoie un message au médecin le plus proche avec la localisation du "malade"
+--> Si le médecin le plus proche peut s'y rendre, renseigne OK et l'utilisateur reçoit une notification comme quoi un médecin va arriver d'ici ...min
+--> Si pas dispo, contacte un autre médecin proche, etc.
+--> Si pas de médecins dispo dans les 10 km autour, renvoyer pas de médecins à proximité.

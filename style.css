@@ -1,0 +1,15 @@
+body {
+	width : 80%;
+	height : auto;
+	font-family: 'Montserrat', normal;
+	text-align: justify;
+	background : #CCD0CF;
+}
+h1 {
+	color : #3B8D82;
+}
+
+#contactMedecin{
+	background : #00C026;
+	height : 40px;
+}
