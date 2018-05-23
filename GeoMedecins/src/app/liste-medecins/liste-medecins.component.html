@@ -1,0 +1,10 @@
+  <ul *ngFor="let m of medecins">
+    <li>{{m.prenom +" "+m.nom}}
+    <button (click)="editMedecin(m.id)">Edit</button>
+    </li>
+  </ul>
+
+  <label>Entrez votre prénom</label><input [(ngModel)]="medecin.prenom"/><br>
+  <label>Entrez votre nom</label><input [(ngModel)]="medecin.nom"/>
+  <button (click)="addMedecin()" *ngIf="!edit">Ajouter</button>
+  <button (click)="editOver()" *ngIf="edit">Soumettre</button>

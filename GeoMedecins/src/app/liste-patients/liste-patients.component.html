@@ -1,0 +1,6 @@
+<ul *ngFor="let p of patients">
+  <li>{{p.nom}}</li>
+</ul>
+
+<label>Entrez votre nom</label><input [(ngModel)]="patient.nom"/>
+<button (click)="addPatient()">Ajouter</button>
