@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Medecin } from '../_models';
+import { MedecinService } from '../_services/medecin.service';
 
 @Component({
   selector: 'app-liste-medecins',
@@ -8,14 +9,16 @@ import { Medecin } from '../_models';
 })
 export class ListeMedecinsComponent implements OnInit {
   edit = false;
-  medecins = [new Medecin('Gilles', 'Boulon', 'medecin generaliste', 12548, 563214), 
-  new Medecin('Celine', 'Truc', 'chirurgienne', 23654, 54896)];
+
   medecin = new Medecin();
   selectedMedecin: Medecin;
+  medecins;
 
-  constructor() { }
+  constructor(private medecinService: MedecinService) {
+  }
 
   ngOnInit() {
+    this.medecins = this.medecinService.getMedecins();
   }
 
   addMedecin() {
@@ -24,7 +27,7 @@ export class ListeMedecinsComponent implements OnInit {
   }
 
   editMedecin(id: number) {
-    this.medecin = this.getMedecinById(id);
+    this.medecin = this.getMedecinById(id); 
     this.edit = true;
   }
 
@@ -35,7 +38,8 @@ export class ListeMedecinsComponent implements OnInit {
     //   }
     // }
     // return null;
-    return this.medecins.filter(m => m.id === identifiant && m.id > 10)[0];
+    // Revient à faire :
+    return this.medecins.filter(m => m.id === identifiant)[0];
   }
 
   editOver() {

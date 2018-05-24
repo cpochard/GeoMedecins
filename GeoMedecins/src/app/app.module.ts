@@ -9,7 +9,13 @@ import { FooterComponent } from './footer/footer.component';
 import { ListeMedecinsComponent } from './liste-medecins/liste-medecins.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
 import { MedecinDetailComponent } from './medecin-detail/medecin-detail.component';
+import { MedecinService } from './_services/medecin.service';
+import { RouterModule, Routes } from '@angular/router';
+import { AfficherMedecinComponent } from './afficher-medecin/afficher-medecin.component';
 
+const appRoutes: Routes = [
+  { path: '', component: ListeMedecinsComponent },
+  { path: 'medecin', component: AfficherMedecinComponent }];
 
 @NgModule({
   declarations: [
@@ -19,12 +25,15 @@ import { MedecinDetailComponent } from './medecin-detail/medecin-detail.componen
     FooterComponent,
     ListeMedecinsComponent,
     ListePatientsComponent,
-    MedecinDetailComponent
+    MedecinDetailComponent,
+    AfficherMedecinComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    RouterModule.forRoot(appRoutes),
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [MedecinService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
