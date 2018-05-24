@@ -8,8 +8,10 @@ import { Medecin } from '../_models';
 })
 export class ListeMedecinsComponent implements OnInit {
   edit = false;
-  medecins = [new Medecin('Gilles', 'Boulon'), new Medecin('Celine', 'Truc')];
+  medecins = [new Medecin('Gilles', 'Boulon', 'medecin generaliste', 12548, 563214), 
+  new Medecin('Celine', 'Truc', 'chirurgienne', 23654, 54896)];
   medecin = new Medecin();
+  selectedMedecin: Medecin;
 
   constructor() { }
 
@@ -39,6 +41,10 @@ export class ListeMedecinsComponent implements OnInit {
   editOver() {
     this.edit = false;
     this.medecin = new Medecin();
+  }
+
+  onSelect(medecin: Medecin): void {
+    this.selectedMedecin = medecin;
   }
 
 }

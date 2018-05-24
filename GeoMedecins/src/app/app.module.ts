@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListeMedecinsComponent } from './liste-medecins/liste-medecins.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
+import { MedecinDetailComponent } from './medecin-detail/medecin-detail.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ListePatientsComponent } from './liste-patients/liste-patients.componen
     HeaderComponent,
     FooterComponent,
     ListeMedecinsComponent,
-    ListePatientsComponent
+    ListePatientsComponent,
+    MedecinDetailComponent
   ],
   imports: [
     BrowserModule, FormsModule

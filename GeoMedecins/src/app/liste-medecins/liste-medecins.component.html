@@ -1,10 +1,16 @@
-  <ul *ngFor="let m of medecins">
-    <li>{{m.prenom +" "+m.nom}}
+<ul *ngFor="let m of medecins" class="liste-medecins">
+  <li [class.selected]="m === selectedMedecin" (click)="onSelect(m)">{{m.prenom +" "+m.nom}}
     <button (click)="editMedecin(m.id)">Edit</button>
-    </li>
-  </ul>
+  </li>
+</ul>
 
-  <label>Entrez votre prénom</label><input [(ngModel)]="medecin.prenom"/><br>
-  <label>Entrez votre nom</label><input [(ngModel)]="medecin.nom"/>
-  <button (click)="addMedecin()" *ngIf="!edit">Ajouter</button>
-  <button (click)="editOver()" *ngIf="edit">Soumettre</button>
+<label>Entrez votre prénom</label>
+<input [(ngModel)]="medecin.prenom" />
+<br>
+<label>Entrez votre nom</label>
+<input [(ngModel)]="medecin.nom" />
+<button (click)="addMedecin()" *ngIf="!edit">Ajouter</button>
+<button (click)="editOver()" *ngIf="edit">Soumettre</button>
+
+<app-medecin-detail [medecin]="selectedMedecin"></app-medecin-detail>
+
