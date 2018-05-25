@@ -12,10 +12,13 @@ import { MedecinDetailComponent } from './medecin-detail/medecin-detail.componen
 import { MedecinService } from './_services/medecin.service';
 import { RouterModule, Routes } from '@angular/router';
 import { AfficherMedecinComponent } from './afficher-medecin/afficher-medecin.component';
+import { ContactComponent } from './contact/contact.component';
 
 const appRoutes: Routes = [
-  { path: '', component: ListeMedecinsComponent },
-  { path: 'medecin', component: AfficherMedecinComponent }];
+  { path : '', component : ContactComponent},
+  { path: 'liste', component: ListeMedecinsComponent },
+  { path: 'medecin/:id', component: AfficherMedecinComponent }
+];
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
     ListeMedecinsComponent,
     ListePatientsComponent,
     MedecinDetailComponent,
-    AfficherMedecinComponent
+    AfficherMedecinComponent,
+    ContactComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

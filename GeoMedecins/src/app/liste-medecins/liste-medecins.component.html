@@ -1,5 +1,6 @@
 <ul *ngFor="let m of medecins" class="liste-medecins">
   <li [class.selected]="m === selectedMedecin" (click)="onSelect(m)">{{m.prenom +" "+m.nom}}
+    <button><a [routerLink]="['/medecin', m.id]"> Détails </a></button>
     <button (click)="editMedecin(m.id)">Edit</button>
   </li>
 </ul>

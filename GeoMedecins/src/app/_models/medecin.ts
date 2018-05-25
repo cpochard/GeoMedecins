@@ -6,15 +6,17 @@ export class Medecin {
     public profession: string;
     public lattitude: number;
     public longitude: number;
+    public photo;
 
 
-    constructor(prenom = '', nom = '', profession = '', lattitude = 0, longitude = 0) {
+    constructor(prenom = '', nom = '', profession = '', lattitude = 0, longitude = 0, photo = '') {
         this.id = Medecin.count++;
         this.prenom = prenom;
         this.nom = nom;
         this.profession = profession;
         this.lattitude = lattitude;
         this.longitude = longitude;
+        this.photo = photo;
 
     }
 }
