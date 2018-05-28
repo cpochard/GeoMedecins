@@ -1,0 +1,10 @@
+<div *ngIf="requete">
+  <h2>{{ "Requête :" + requete.id }}</h2>
+  <div>
+    <span>Sujet : </span>{{requete.sujet}}</div>
+  <div>
+    <span>Date : </span>{{requete.date | date:'fullDate'}}</div>
+  <div>
+    <span>Nom du patient : </span>{{requete.patient}}</div>
+</div>
+  

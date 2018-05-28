@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Medecin } from '../_models';
 
-
-
 @Component({
   selector: 'app-medecin-detail',
   templateUrl: './medecin-detail.component.html',

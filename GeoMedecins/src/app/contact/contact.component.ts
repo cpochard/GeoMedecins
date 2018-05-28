@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
+import { Requete } from '../_models/requete';
+import { RequeteService } from '../_services/requete.service';
+import { Attribute } from '@angular/compiler';
 
 @Component({
   selector: 'app-contact',
@@ -9,23 +12,38 @@ import { DOCUMENT } from '@angular/platform-browser';
 
 export class ContactComponent implements OnInit {
 
-  url;
+  requete = new Requete();
+  requetes;
+  boolean = false;
 
-  constructor(@Inject(DOCUMENT) private document: any) { }
+  constructor(private requeteService: RequeteService) {
+
+  }
 
   ngOnInit() {
-    this.url = '';
+    this.requetes = this.requeteService.getRequetes();
+  }
+
+  // Permet d'afficher les input pour que le patient rentre les infos
+  contacterMedecin() {
+    this.boolean = true;
+  }
+
+  // Quand on clique sur contacter, on rajoute une requete à la liste de requetes avec les infos rentrées par le patient
+  envoyerRequete() {
+    this.requete.date = new Date(Date.now());
+    this.positionActuelle();
+    console.log(this.requete.lat);
+    this.requetes.push(this.requete);
   }
 
   positionActuelle(): void {
     navigator.geolocation.getCurrentPosition(p => this.showPosition(p));
-    console.log(this.url);
   }
 
   showPosition(position) {
-    const latlon = position.coords.latitude + ',' + position.coords.longitude;
-    console.log(latlon);
-    this.url = 'https://www.google.com/maps/@' + latlon;
-    this.document.location.href = this.url;
+    this.requete.lat = position.coords.latitude;
+    this.requete.lon = position.coords.longitude;
   }
+
 }

@@ -5,8 +5,8 @@ import { Medecin } from '../_models';
   providedIn: 'root'
 })
 export class MedecinService {
-  medecins = [new Medecin('Gilles', 'Boulon', 'medecin generaliste', 12548, 563214, 'doc1.jpg'),
-  new Medecin('Celine', 'Truc', 'chirurgienne', 23654, 54896, 'doc2.jpg')];
+  medecins = [new Medecin('Gilles', 'Boulon', 'medecin generaliste', 12548, 563214, 'doc1.jpg', 'boulon@mail.com'),
+  new Medecin('Celine', 'Truc', 'chirurgienne', 23654, 54896, 'doc2.jpg', 'truc@mail.com')];
 
   constructor() { }
 

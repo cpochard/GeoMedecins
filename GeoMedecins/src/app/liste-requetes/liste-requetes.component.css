@@ -5,3 +5,7 @@ button{
 	border-radius:10px;
 	font-weight : bold;
 }
+
+.selected{
+  	color: rgb(114, 111, 111);
+}

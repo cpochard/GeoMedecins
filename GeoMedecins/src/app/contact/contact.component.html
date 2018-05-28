@@ -10,4 +10,15 @@
     <br>Pour contacter le SAMU, composez le 15.</i>
 </p>
 
-<button id="contactMedecin" (click)="positionActuelle()">Contacter un medecin</button>
+<button id="contactMedecin" (click)="contacterMedecin()">Contacter un medecin</button>
+<br><br>
+<a [routerLink]="['/requetes']">Liste des requêtes</a>
+
+<div *ngIf="boolean">
+    <label>Entrez le sujet de votre demande</label>
+<input [(ngModel)]="requete.sujet" />
+<br>
+<label>Entrez votre nom</label>
+<input [(ngModel)]="requete.patient" />
+<button (click)="envoyerRequete()">Envoyer</button>
+</div>

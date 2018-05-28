@@ -1,0 +1,9 @@
+<ul *ngFor="let r of requetes" class="liste-requetes">
+  <li [class.selected]="r === selectedRequete" (click)="onSelect(r)">{{"Requete : " + r.id }}
+    <button>
+      <a [routerLink]="['/requete', r.id]"> Détails </a>
+    </button>
+  </li>
+</ul>
+
+<app-requete-detail [requete]="selectedRequete"></app-requete-detail>
