@@ -1,9 +1,26 @@
-<ul *ngFor="let r of requetes" class="liste-requetes">
-  <li [class.selected]="r === selectedRequete" (click)="onSelect(r)">{{"Requete : " + r.id }}
-    <button>
-      <a [routerLink]="['/requete', r.id]"> Détails </a>
-    </button>
-  </li>
-</ul>
+<div class = "row">
 
-<app-requete-detail [requete]="selectedRequete"></app-requete-detail>
+  <div class = "col-3">
+    <ul *ngFor="let r of requetes" class="liste-requetes">
+      <li [class.selected]="r === selectedRequete" (click)="onSelect(r)">{{"Requete : " + r.id + "&nbsp;&nbsp;&nbsp;"}}
+        <button>
+          <a [routerLink]="['/requete', r.id]"> Détails </a>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-9">
+    <div *ngIf="boolean" id="requete">
+        <h2>{{ "Requete " + requete.id }} - Details</h2>
+        <div>
+          <span>Sujet : </span>{{requete.sujet}}</div>
+        <div>
+          <span>Date : </span>{{requete.date}}</div>
+        <div>
+          <span>Nom du patient : </span>{{requete.patient}}</div>
+        </div>
+      <div id="map"></div>
+    </div>
+    
+  </div>

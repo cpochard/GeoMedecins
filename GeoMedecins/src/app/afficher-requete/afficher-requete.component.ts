@@ -11,27 +11,34 @@ import * as L from 'leaflet';
 export class AfficherRequeteComponent implements OnInit {
 
   requete;
+  map;
+  baseIcon = L.icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
+  });
+
   constructor(private activatedRoute: ActivatedRoute,
     private requeteService: RequeteService) { }
 
   ngOnInit() {
-
     this.activatedRoute.params.subscribe(p => this.loadRequete(p['id']));
 
-    const myfrugalmap = L.map('frugalmap').setView([this.requete.lat, this.requete.lon], 12);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: 'Frugal Map'
-    }).addTo(myfrugalmap);
-    const myIcon = L.icon({
-      iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
-    });
-    L.marker([this.requete.lat, this.requete.lon], { icon: myIcon }).bindPopup('Position du patient').addTo(myfrugalmap).openPopup();
-
+    this.map = L.map('map').setView([this.requete.lat, this.requete.lon], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(this.map);
+      this.addMarker(this.requete.lat, this.requete.lon, 'Position du patient');
   }
 
   loadRequete(id: string) {
     this.requete = this.requeteService.getRequeteById(+id);
   }
 
+  addMarker(lat, lng, popup) {
+    L.marker([lat, lng], { icon: this.baseIcon }).bindPopup(popup).addTo(this.map).on('click', () => this.eventOnClick(lat, lng));
+  }
+
+  eventOnClick(lat, lng) {
+    alert('latitude : ' + lat + ', longitude : ' + lng);
+  }
 
 }

@@ -1,11 +1,47 @@
 button{
-    background-color: #4EBC64;
-	height : 23px;
+	background-color: #B7C4DF;
+	height : 25px;
+	border-radius:5px;
+	margin-top:-3px;
+	float:right;
+}
+
+a{
+	color: black;
 	font-size: 12px;
-	border-radius:10px;
 	font-weight : bold;
+}
+
+button:hover{
+	background-color: #82F0AA;
 }
 
 .selected{
   	color: rgb(114, 111, 111);
+}
+
+.col-3{
+	background-color: #DFE2E2;
+	border-radius:10px;
+	border-style: solid;
+	border-width : 2px;
+	border-color : #798382;
+	padding-top:10px;
+}
+
+#requete{
+	background-color: #DFE2E2;
+	border-radius:10px;
+	border-style: solid;
+	border-width : 2px;
+	border-color : #798382;
+	padding-top:10px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+	background: white;
 }

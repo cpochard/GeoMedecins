@@ -15,6 +15,7 @@ export class ContactComponent implements OnInit {
   requete = new Requete();
   requetes;
   boolean = false;
+  inf = false;
 
   constructor(private requeteService: RequeteService) {
 
@@ -22,6 +23,10 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.requetes = this.requeteService.getRequetes();
+  }
+
+  afficherInfos() {
+    this.inf = !this.inf;
   }
 
   // Permet d'afficher les input pour que le patient rentre les infos

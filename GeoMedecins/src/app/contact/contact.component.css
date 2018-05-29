@@ -1,16 +1,65 @@
 #p1{
 	background : #E1E5F4;
-	padding : 30px 30px;
+	padding : 10px 10px;
 	border-radius : 10px;
 	box-shadow : 0 10px 15px #5A5B5E;
 }
 
+#infos{
+	font-weight: bold;
+	background-color: #98AEA0;
+	border-radius:3px;
+}
+
+#p2{
+	padding: 10px 10px;
+	border-style:solid;
+	border-color:black;
+    border-width: 1px;
+    font-size:14px;
+}
+
 #contactMedecin{
-	background : #4EBC64;
-	height : 40px;
-	font-size: 20px;
-	border-radius:10px;
-	font-weight : bold;
-	color : #61121F;
-	box-shadow : 0 10px 15px #5A5B5E;
+	display: block;
+	margin : auto;
+	position: relative;
+    background-color: #4CAF50;
+    border: none;
+	font-size: 22px;
+	font-weight: bold;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#contactMedecin:hover{
+	background-color:#25C35F;
+	color:black;
+}
+#contactMedecin:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+#contactMedecin:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+#form{
+	text-align : center;
 }

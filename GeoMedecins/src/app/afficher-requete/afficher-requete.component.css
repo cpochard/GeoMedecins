@@ -1,5 +1,16 @@
-#frugalmap {
+#map {
     height: 600px;
     width: 100%;
     background: white;
+}
+
+#requete{
+	background-color: #DFE2E2;
+	border-radius:10px;
+	border-style: solid;
+	border-width : 2px;
+	border-color : #798382;
+	padding-top:10px;
+	margin-bottom: 20px;
+	text-align: center;
 }

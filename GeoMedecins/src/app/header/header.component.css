@@ -1,4 +1,9 @@
-p{
-    font-size : 30px;
+#titre1{
+    font-size : 50px;
     font-style : bold;
+    font-family: 'Concert One', cursive;
+}
+
+#sous-titre{
+font-family: 'Kalam', cursive;
 }
