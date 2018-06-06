@@ -25,8 +25,7 @@ export class ListeRequetesComponent implements OnInit {
 
   ngOnInit() {
     // this.requetes = this.requeteService.getRequetes();
-     this.http.get('http://localhost:8080/requetes').subscribe(r => this.loadData(r));
-// this.requeteService.getAll().subscribe(r => this.list = r['results']);
+    this.requeteService.getAll().subscribe(r => this.loadData(r));
     this.map = L.map('map');
   }
 
@@ -51,8 +50,7 @@ export class ListeRequetesComponent implements OnInit {
   eventOnClick(id) {
     for (const req of this.requetes) {
       if (req.id === id) {
-        const s = 'http://localhost:8080/requete/' + id;
-        this.http.get(s).subscribe(r2 => this.showReturnID(r2));
+      this.requeteService.get(id).subscribe(r2 => this.showReturnID(r2));
         // this.requete = this.requeteService.getRequeteById(id);
         this.boolean = true;
       }
@@ -69,8 +67,7 @@ export class ListeRequetesComponent implements OnInit {
   // }
 
   onSelect(requete: Requete): void {
-    const s = 'http://localhost:8080/requete/' + requete.id;
-    this.http.get(s).subscribe(r3 => this.showReturnID(r3));
+    this.requeteService.get(requete.id).subscribe(r3 => this.showReturnID(r3));
     // this.requete = this.requeteService.getRequeteById(requete.id);
     this.selectedRequete = requete;
     this.boolean = true;

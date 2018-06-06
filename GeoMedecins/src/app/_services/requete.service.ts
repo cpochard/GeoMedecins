@@ -15,6 +15,18 @@ export class RequeteService {
 
     table = 'requete';
 
+    getAll() {
+        return this.ws.getAll(this.table + 's');
+      }
+
+    get(id: number) {
+        return this.ws.get(this.table, id);
+      }
+
+    add(requete: Requete) {
+        return this.ws.add(this.table, requete);
+      }
+
     /* getRequetes() {
         return this.requetes;
     }

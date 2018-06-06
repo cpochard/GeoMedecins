@@ -26,9 +26,8 @@ export class AfficherRequeteComponent implements OnInit {
     this.activatedRoute.params.subscribe(p => this.loadRequete(p['id']));
   }
 
-  loadRequete(id: string) {
-    const s = 'http://localhost:8080/requete/' + id;
-    this.http.get(s).subscribe(r => this.showReturnID(r));
+  loadRequete(id: number) {
+    this.requeteService.get(id).subscribe(r => this.showReturnID(r));
 // this.requete = this.requeteService.getRequeteById(+id);
   }
 

@@ -45,4 +45,9 @@ public class RequeteService implements IRequeteService {
 	public Requete getByID(int identifiant) {
 		return this.iRequeteRepository.getOne(identifiant);
 	}
+
+	@Override
+	public void addRequete(Requete req) {
+		this.iRequeteRepository.save(req);
+	}
 }

@@ -24,8 +24,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/requetes').subscribe(r => this.loadData(r));
-
+    this.requeteService.getAll().subscribe(r => this.loadData(r));
     // this.requetes = this.requeteService.getRequetes();
   }
 
@@ -47,8 +46,7 @@ export class ContactComponent implements OnInit {
   envoyerRequete() {
     this.requete.date = new Date(Date.now());
     this.positionActuelle();
-    console.log(this.requete.lat);
-    this.requetes.push(this.requete);
+    // this.requetes.push(this.requete);
   }
 
   positionActuelle(): void {
@@ -58,6 +56,7 @@ export class ContactComponent implements OnInit {
   showPosition(position) {
     this.requete.lat = position.coords.latitude;
     this.requete.lon = position.coords.longitude;
+    this.requeteService.add(this.requete).subscribe(req => this.requetes.push(req));
   }
 
 }

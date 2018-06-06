@@ -15,4 +15,6 @@ public interface IRequeteService {
 
 	List<Requete> getAll();
 
+	void addRequete(Requete req);
+
 }
