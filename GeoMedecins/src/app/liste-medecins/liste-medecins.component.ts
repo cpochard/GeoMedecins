@@ -27,7 +27,7 @@ export class ListeMedecinsComponent implements OnInit {
   }
 
   editMedecin(id: number) {
-    this.medecin = this.getMedecinById(id); 
+    this.medecin = this.getMedecinById(id);
     this.edit = true;
   }
 

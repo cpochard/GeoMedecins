@@ -15,6 +15,9 @@ import { ContactComponent } from './contact/contact.component';
 import { ListeRequetesComponent } from './liste-requetes/liste-requetes.component';
 import { RequeteDetailComponent } from './requete-detail/requete-detail.component';
 import { AfficherRequeteComponent } from './afficher-requete/afficher-requete.component';
+import { HttpClientModule } from '@angular/common/http';
+import { WebComponent } from './web/web.component';
+
 
 const appRoutes: Routes = [
   { path : '', component : ContactComponent},
@@ -37,11 +40,13 @@ const appRoutes: Routes = [
     ListeRequetesComponent,
     RequeteDetailComponent,
     AfficherRequeteComponent,
+    WebComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [MedecinService],
   bootstrap: [AppComponent]

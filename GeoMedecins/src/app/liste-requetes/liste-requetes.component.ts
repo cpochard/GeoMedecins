@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Requete } from '../_models/requete';
 import { RequeteService } from '../_services/requete.service';
 import * as L from 'leaflet';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-liste-requetes',
@@ -11,24 +12,33 @@ import * as L from 'leaflet';
 export class ListeRequetesComponent implements OnInit {
   requete = new Requete();
   selectedRequete: Requete;
-  requetes;
+  requetes = [];
   map;
   baseIcon = L.icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
   });
   boolean: Boolean = false;
+  liste = '';
+  string;
 
-  constructor(private requeteService: RequeteService) { }
+  constructor(private requeteService: RequeteService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.requetes = this.requeteService.getRequetes();
+    // this.requetes = this.requeteService.getRequetes();
+     this.http.get('http://localhost:8080/requetes').subscribe(r => this.loadData(r));
+// this.requeteService.getAll().subscribe(r => this.list = r['results']);
     this.map = L.map('map');
-    for (const r of this.requetes) {
-      this.map.setView([r.lat, r.lon], 10);
+  }
+
+  loadData(r) {
+    this.liste = JSON.stringify(r);
+    this.requetes = JSON.parse(this.liste);
+    for (const req of this.requetes) {
+      this.map.setView([req.lat, req.lon], 10);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
-      this.addMarker(r.lat, r.lon, 'Position du patient', r.id);
+      this.addMarker(req.lat, req.lon, 'Position du patient', req.id);
     }
   }
 
@@ -41,18 +51,27 @@ export class ListeRequetesComponent implements OnInit {
   eventOnClick(id) {
     for (const req of this.requetes) {
       if (req.id === id) {
-        this.requete = this.requeteService.getRequeteById(id);
+        const s = 'http://localhost:8080/requete/' + id;
+        this.http.get(s).subscribe(r2 => this.showReturnID(r2));
+        // this.requete = this.requeteService.getRequeteById(id);
         this.boolean = true;
       }
     }
   }
 
-  getRequeteById(identifiant: number): Requete {
-    return this.requetes.filter(r => r.id === identifiant)[0];
+  showReturnID(r2) {
+    this.string = JSON.stringify(r2);
+    this.requete = JSON.parse(this.string);
   }
 
+  // getRequeteById(identifiant: number): Requete {
+    // return this.requetes.filter(r => r.id === identifiant)[0];
+  // }
+
   onSelect(requete: Requete): void {
-    this.requete = this.requeteService.getRequeteById(requete.id);
+    const s = 'http://localhost:8080/requete/' + requete.id;
+    this.http.get(s).subscribe(r3 => this.showReturnID(r3));
+    // this.requete = this.requeteService.getRequeteById(requete.id);
     this.selectedRequete = requete;
     this.boolean = true;
   }

@@ -3,6 +3,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { Requete } from '../_models/requete';
 import { RequeteService } from '../_services/requete.service';
 import { Attribute } from '@angular/compiler';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -13,16 +14,24 @@ import { Attribute } from '@angular/compiler';
 export class ContactComponent implements OnInit {
 
   requete = new Requete();
-  requetes;
+  requetes = [] ;
   boolean = false;
   inf = false;
+  liste;
 
-  constructor(private requeteService: RequeteService) {
+  constructor(private requeteService: RequeteService, private http: HttpClient) {
 
   }
 
   ngOnInit() {
-    this.requetes = this.requeteService.getRequetes();
+    this.http.get('http://localhost:8080/requetes').subscribe(r => this.loadData(r));
+
+    // this.requetes = this.requeteService.getRequetes();
+  }
+
+  loadData(r) {
+    this.liste = JSON.stringify(r);
+    this.requetes = JSON.parse(this.liste);
   }
 
   afficherInfos() {
