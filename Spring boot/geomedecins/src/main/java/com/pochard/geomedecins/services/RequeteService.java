@@ -13,6 +13,16 @@ public class RequeteService implements IRequeteService {
 
 	// private List<Requete> requetes;
 
+	int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Autowired
 	IRequeteRepository iRequeteRepository;
 
@@ -47,7 +57,9 @@ public class RequeteService implements IRequeteService {
 	}
 
 	@Override
-	public void addRequete(Requete req) {
-		this.iRequeteRepository.save(req);
+	public Requete addRequete(Requete req) {
+		System.out.println(req);
+		// this.id = this.iRequeteRepository.save(req).getId();
+		return this.iRequeteRepository.save(req);
 	}
 }

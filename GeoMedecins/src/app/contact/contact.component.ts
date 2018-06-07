@@ -56,7 +56,8 @@ export class ContactComponent implements OnInit {
   showPosition(position) {
     this.requete.lat = position.coords.latitude;
     this.requete.lon = position.coords.longitude;
-    this.requeteService.add(this.requete).subscribe(req => this.requetes.push(req));
+
+    this.requeteService.add(this.requete).subscribe(req => (this.requetes.push(req)));
   }
 
 }

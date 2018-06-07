@@ -4,14 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Requete {
 
-	private static int count = 0;
 	@Id
-	private int id = 0;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	@Column
 	private String sujet;
 	@Column
@@ -42,19 +44,11 @@ public class Requete {
 		return builder.toString();
 	}
 
-	static int getCount() {
-		return count;
-	}
-
-	public static void setCount(int count) {
-		Requete.count = count;
-	}
-
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -99,7 +93,6 @@ public class Requete {
 	}
 
 	public Requete(String tmpSujet, Date tmpDate, String tmpPatient, double tmpLat, double tmpLon) {
-		this.id = Requete.count++;
 		this.sujet = tmpSujet;
 		this.date = tmpDate;
 		this.patient = tmpPatient;

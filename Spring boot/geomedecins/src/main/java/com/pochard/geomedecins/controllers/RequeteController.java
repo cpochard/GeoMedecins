@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochard.geomedecins.models.Requete;
+import com.pochard.geomedecins.services.EmailServiceImpl;
 import com.pochard.geomedecins.services.IRequeteService;
 
 @CrossOrigin
@@ -19,6 +20,9 @@ public class RequeteController implements IRequeteController {
 
 	@Autowired
 	IRequeteService requeteService;
+
+	@Autowired
+	EmailServiceImpl emailService;
 
 	public IRequeteService getRequeteService() {
 		return requeteService;
@@ -44,7 +48,11 @@ public class RequeteController implements IRequeteController {
 
 	@RequestMapping(value = "/requeteAjout", method = RequestMethod.POST)
 	public void ajoutRequete(@RequestBody Requete req) {
-		this.requeteService.addRequete(req);
+		Requete r = this.requeteService.addRequete(req);
+		System.out.println(r);
+		// envoyer mail
+		this.emailService.sendSimpleMessage("geomedecins@gmail.com", "test",
+				"http://localhost:4200/requete/" + r.getId());
 	}
 
 }

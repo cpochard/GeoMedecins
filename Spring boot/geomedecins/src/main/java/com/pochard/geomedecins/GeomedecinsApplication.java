@@ -8,5 +8,6 @@ public class GeomedecinsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GeomedecinsApplication.class, args);
+
 	}
 }
